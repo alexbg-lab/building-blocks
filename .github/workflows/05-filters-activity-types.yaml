@@ -9,7 +9,7 @@ on:
       - 'release/**'
 
 jobs:
-  node-20-release:
+  checkout-code:
     runs-on: ubuntu-latest
     defaults:
       run:
