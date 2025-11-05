@@ -17,4 +17,5 @@ jobs:
           node-version: "20.x"
       # - run: npm ci
       # - run: npm test
-      - run: npm --version
+      - name: Print Node version
+        run: npm --version
