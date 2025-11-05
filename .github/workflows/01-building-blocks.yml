@@ -8,7 +8,7 @@ jobs:
     steps:
       - name: Say Hello
         run: |
-          echo "Failing on purpose"
-          exit 1
+          echo "Not Failing on purpose"
+          exit 0
       - name: Say Goodbye
         run: echo "Goodbye World"
