@@ -19,10 +19,11 @@ jobs:
       - name: "[debug] Print start-up data"
         if: ${{ inputs.debug }}
         run: |
-          "Triggered by: ${{ github.event_name }}"
-          "Branch: ${{ github.ref }}"
-          "Commit SHA: ${{ github.sha }}"
-          "Runner OS: $RUNNER_OS"
+          set -exo
+          echo "Triggered by: ${{ github.event_name }}"
+          echo "Branch: ${{ github.ref }}"
+          echo "Commit SHA: ${{ github.sha }}"
+          echo "Runner OS: $RUNNER_OS"
 
       - name: "[debug] Print when triggered"
         if: ${{ inputs.debug && github.ref == 'refs/heads/main' }}
