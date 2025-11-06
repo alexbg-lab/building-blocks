@@ -1,5 +1,5 @@
 name: 06-workflow-contexts
-run-name: 06-workflow-contexts | DEBUG - ${{ inputs.debug // false }}
+run-name: 06-workflow-contexts | DEBUG - ${{ inputs.debug }}
 on:
   push:
     branches:
@@ -8,6 +8,7 @@ on:
     inputs:
       debug:
         type: boolean
+        default: false
       MY_VAR:
         description: "Some variable"
         required: true
