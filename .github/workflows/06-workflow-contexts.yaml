@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       MY_VAR:
-        description: 'Log level'
+        description: 'Some variable'
         required: true
         default: 'hello world'
         type: choice
