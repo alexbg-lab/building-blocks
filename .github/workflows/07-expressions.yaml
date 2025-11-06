@@ -1,4 +1,4 @@
-name: 07 - Using Expressions
+name: 07-using-expressions
 run-name: "07 - Using Expressions | DEBUG - ${{ inputs.debug && 'ON' || 'OFF' }}"
 
 env: 
