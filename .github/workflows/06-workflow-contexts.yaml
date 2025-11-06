@@ -10,12 +10,6 @@ on:
         description: 'Some variable'
         required: true
         default: 'hello world'
-        type: choice
-        options:
-        - hello world 
-        - info
-        - warning
-        - debug
 
 jobs:
   echo1:
