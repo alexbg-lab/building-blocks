@@ -20,7 +20,7 @@ jobs:
     env:
       MY_VAR2: "job-overriden variable value"
     steps:
-      - name: Display Info
+      - name: Display Github meta data
         run: |
           echo "Event name: ${{ github.event_name }}"
           echo "Ref: ${{ github.ref }}"
@@ -29,7 +29,7 @@ jobs:
           echo "Workflow: ${{ github.workflow }}"
           echo "Run ID: ${{ github.run_id }}"
           echo "Run number: ${{ github.run_number }}"
-      - name: Retrieve Variable
+      - name: Retrieve Variable Values
         env:
           MY_VAR2: "step-overriden variable value"
         run: |
@@ -38,7 +38,7 @@ jobs:
   echo2:  
     runs-on: ubuntu-latest
     steps:
-      - name: Retrieve Variable
+      - name: Retrieve Variable Values2
         run: |
           echo "Github Variables:MY_VAR: $MY_VAR"
           echo "MY_VAR2: $MY_VAR2"
