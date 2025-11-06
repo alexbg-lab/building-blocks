@@ -1,5 +1,5 @@
 name: 06-workflow-contexts
-
+run-name: My cust wrofklow name - ${{ runner.os }}
 on:
   push:
     branches:
