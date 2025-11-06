@@ -9,7 +9,7 @@ on:
       debug:
         type: boolean
         default: false
-      MY_VAR:
+      MY_VAR2:
         description: "Some variable"
         required: true
         default: "hello world"
@@ -36,3 +36,4 @@ jobs:
       - name: Retrieve Variable
         run: |
           echo "MY_VAR: ${{ vars.MY_VAR }}"
+          echo "MY_VAR: ${{ env.MY_VAR2 }}"
