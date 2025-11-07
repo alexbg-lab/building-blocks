@@ -1,1 +1,1 @@
-Test workflow improved.
+Test GH Actions workflows.
