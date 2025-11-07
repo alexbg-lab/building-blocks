@@ -14,6 +14,9 @@ on:
 jobs:
   lint-build:
     runs-on: ubuntu-latest
+    steps:
+      - name: "Lint and build..."
+        run: echo "Linting and building..."
   unit-tests:
     runs-on: ubuntu-latest
     steps:
