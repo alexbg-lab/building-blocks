@@ -44,8 +44,8 @@ jobs:
         #   step_var2: 'I am another step var'
         run: |
           set -exo
-          echo "ORG var: ${{ env.ORG_VARIABLE }}"
-          echo "ORG overwritten var: ${{ env.OVERWRITTEN }}"
+          echo "ORG var: ${{ vars.ORG_VARIABLE }}"
+          echo "ORG overwritten var: ${{ vars.OVERWRITTEN_VAR }}"
           echo "Repo var: ${{ vars.REPOSITORY_VAR }}"
   echo-prod:
     runs-on: ubuntu-latest
@@ -54,7 +54,7 @@ jobs:
       - name: "Print PROD Variables"
         run: |
           set -exo
-          echo "ORG var: ${{ env.ORG_VARIABLE }}"
+          echo "ORG var: ${{ vars.ORG_VARIABLE }}"
           echo "ORG overwritten var: ${{ env.OVERWRITTEN }}"
           echo "Repo var: ${{ vars.REPOSITORY_VAR }}"
           echo "Environment var: ${{ vars.TARGET_VAR }}"
