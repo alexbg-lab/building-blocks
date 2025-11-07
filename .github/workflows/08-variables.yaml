@@ -55,7 +55,7 @@ jobs:
         run: |
           set -exo
           echo "ORG var: ${{ vars.ORG_VARIABLE }}"
-          echo "ORG overwritten var: ${{ env.OVERWRITTEN }}"
+          echo "ORG overwritten var: ${{ vars.OVERWRITTEN_VAR }}"
           echo "Repo var: ${{ vars.REPOSITORY_VAR }}"
           echo "Environment var: ${{ vars.TARGET_VAR }}"
   echo-undefined:
