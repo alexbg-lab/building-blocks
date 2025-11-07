@@ -1,0 +1,67 @@
+name: 08 Using Variables
+run-name: 08-using-variables
+on:
+  push:
+
+  workflow_dispatch:
+
+env:
+  WORKFLOW_VAR: "I am a workflow env var"
+  OVERWRITTEN: "I will be overwritten"
+  UNDEFINED_VAR_WITH_DEFAULT: ${{ vars.UNDEFINED_VAR || 'default_value' }}
+
+jobs:
+  echo1:
+    runs-on: ubuntu-latest
+    env:
+      JOB_VAR: "I am a job env var"
+      OVERWRITTEN: "I have been overwritten at the job level"
+    steps:
+      - name: "Print Env Variables"
+        env:
+          STEP_VAR: "I am a step env var"
+          step_var2: "I am another step var"
+        run: |
+          set -exo
+          echo "Step env var: $STEP_VAR or ${{ env.STEP_VAR }}"
+          echo "Step env var 2: $step_var2"
+          echo "Job env var: $JOB_VAR or ${{ env.JOB_VAR }}"
+          echo "Workflow env var: $WORKFLOW_VAR or ${{ env.WORKFLOW_VAR }}"
+          echo "Overwritten: $OVERWRITTEN"
+      - name: "Overwrite Job Variable"
+        env:
+          OVERWRITTEN: "I have been overwritten at the step level"
+        run: |
+          set -exo
+          echo "Step env var: $OVERWRITTEN"
+
+  echo2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Print Variables"
+        # env:
+        #   STEP_VAR: 'I am a step env var'
+        #   step_var2: 'I am another step var'
+        run: |
+          set -x
+          echo "ORG var: ${{ vars.ORG_VARIABLE }}"
+          echo "ORG overwritten var: ${{ vars.OVERWRITTEN_VAR }}"
+          echo "Repo var: ${{ vars.REPOSITORY_VAR }}"
+  echo-prod:
+    runs-on: ubuntu-latest
+    environment: prod
+    steps:
+      - name: "Print PROD Variables"
+        run: |
+          set -x
+          echo "ORG var: ${{ vars.ORG_VARIABLE }}"
+          echo "ORG overwritten var: ${{ vars.OVERWRITTEN_VAR }}"
+          echo "Repo var: ${{ vars.REPOSITORY_VAR }}"
+          echo "Environment var: ${{ vars.TARGET_VAR }}"
+  echo-undefined:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Print Undefined Variables"
+        run: |
+          set -x
+          echo "ORG var: ${{ env.UNDEFINED_VAR_WITH_DEFAULT }}"

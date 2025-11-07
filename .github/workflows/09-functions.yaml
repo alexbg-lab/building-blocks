@@ -1,0 +1,35 @@
+name: 09 - Functions
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+env:
+  ORG_VAR: "organization value"
+  OVERWRITTEN_VAR: organization value 2
+
+jobs:
+  echo1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Print PR Title"
+        run: echo "${{ github.event.pull_request.title }}"
+      - name: "Print PR labels"
+        run: echo "${{ join(github.event.pull_request.labels.*.name, ', ') }}"
+      - name: "Sleep for 10 seconds"
+        run: sleep 10
+      - name: "Failing step"
+        run: exit 1
+      - name: "I will be skipped"
+        if: ${{ success() }}
+        run: echo "I will print if previous steps succeed."
+      - name: "I will execute"
+        if: ${{ failure() }}
+        run: echo "I will print if any previous step fails."
+      - name: I will execute
+        if: ${{ !cancelled() }}
+        run: echo "I will always print, except when the workflow is cancelled."
+      - name: I will execute when cancelled
+        if: ${{ cancelled() }}
+        run: echo "I will execute when the workflow is cancelled."

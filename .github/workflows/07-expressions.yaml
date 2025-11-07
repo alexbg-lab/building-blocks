@@ -1,0 +1,37 @@
+name: 07-using-expressions
+run-name: "07 - Using Expressions | DEBUG - ${{ inputs.debug && 'ON' || 'OFF' }}"
+
+env: 
+  MY_VAR: ${{ vars.MY_VAR || 'default_value' }}
+
+on:
+  # push:
+  #   branches:
+  #     - main
+  workflow_dispatch:
+    inputs:
+      debug:
+        description: "Run the workflow in debug mode"
+        type: boolean
+        default: false
+
+jobs:
+  echo1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "[debug] Print start-up data"
+        if: ${{ inputs.debug }}
+        run: |
+          set -exo
+          echo "Triggered by: ${{ github.event_name }}"
+          echo "Branch: ${{ github.ref }}"
+          echo "Commit SHA: ${{ github.sha }}"
+          echo "Runner OS: $RUNNER_OS"
+
+      - name: "[debug] Print when triggered"
+        if: ${{ inputs.debug && github.ref == 'refs/heads/main' }}
+        run: |
+          echo "I was triggered from main"
+      - name: Greeting
+        run: echo "Hello world"
+
