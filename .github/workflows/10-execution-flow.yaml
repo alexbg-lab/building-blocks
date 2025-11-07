@@ -1,0 +1,41 @@
+name: 10 - Execution flow
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs: 
+      pass-unit-tests:
+        description: "Pass unit tests"
+        type: boolean
+        default: "false"
+
+
+jobs:
+  lint-build:
+    runs-on: ubuntu-latest
+  unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Run unit tests..."
+        run: echo "Running tests..."
+      - name: "Failing tests..."
+        if: ${{ ! inputs.pass-unit-tests }}
+  deploy-nonprod:
+    runs-on: ubuntu-latest
+    needs:
+      - lint-build
+      - unit-tests
+  e2e-tests:
+    runs-on: ubuntu-latest
+    needs:
+      - deploy-nonprod
+  load-tests:
+      runs-on: ubuntu-latest
+      needs: deploy-nonprod
+  deploy-prod:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploying to prod
+        run: echo "Deploying to prod..."
+
