@@ -1,1 +1,1 @@
-Test GH Actions workflows.
+Test GH Actions workflow logics.
