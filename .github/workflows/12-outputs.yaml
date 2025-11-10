@@ -31,4 +31,4 @@ jobs:
     needs: build
     steps:
       - name: Print build status
-        run: echo "${{ needs.build.outputs.status }}"
+        run: echo "${{ steps.build.outputs.status }}"
