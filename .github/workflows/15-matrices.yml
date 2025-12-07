@@ -22,9 +22,8 @@ jobs:
         uses: actions/setup-node@v3
         with: 
           node-version: ${{ matrix.node-version }}
-      - name: Perform tests
-        run: echo "Hello World"
       - name: Fail if experimental
         if: ${{ matrix.tag == 'experimental' }}
         run: exit 1
-  
+      - name: Perform tests
+      run: echo "Hello World"
