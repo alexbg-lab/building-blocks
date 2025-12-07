@@ -5,6 +5,7 @@ on:
 
 jobs:
   backwards-compat:
+    name: ${{matrix.os}} - Node ${{matrix.node-version}}
     runs-on: ${{matrix.os}}
     strategy:
       matrix:
