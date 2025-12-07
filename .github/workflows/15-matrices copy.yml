@@ -42,3 +42,7 @@ jobs:
           - color: yellow
             shape: triangle
             size: medium
+            os: windows-latest
+    steps:
+      - name: Hello World
+        run: echo "${{matrix.color}} - ${{matrix.shape}} - ${{matrix.size}}"
