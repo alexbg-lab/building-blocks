@@ -47,6 +47,9 @@ jobs:
           - color: blue
             shape: square
           - opacity: 50 # latest opacity key in the array overrides the previous ones (100,& 75) and adds to the orig ma3x
+        exclude:
+          - opacity: 75
+
     steps:
       - name: Hello World
         run: echo "${{matrix.color}} - ${{matrix.shape}} - ${{matrix.size}}"
