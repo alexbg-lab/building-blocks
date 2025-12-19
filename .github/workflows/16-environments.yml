@@ -6,7 +6,7 @@ on:
       target-env:
         description: 'Target environment'
         type: environment
-        default: dev
+        default: staging
   push:
     branches:
       - main
