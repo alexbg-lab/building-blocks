@@ -2,10 +2,11 @@ name: 16 - Working with environments
 
 on:
   workflow_dispatch:
-  inputs:
-    target-env:
-      type: environment
-      default: dev
+    inputs:
+      target-env:
+        description: 'Target environment'
+        type: environment
+        default: dev
   push:
     branches:
       - main
