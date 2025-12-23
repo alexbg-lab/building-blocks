@@ -12,6 +12,7 @@ inputs:
     required: false
   target-env:
     description: "Target environment"
+    default: "dev"
     required: true
 
 runs:
