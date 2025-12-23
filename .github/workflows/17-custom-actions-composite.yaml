@@ -5,8 +5,11 @@ on:
     inputs:
       target-env:
         description: "Target environment"
-        default: dev
-        required: false
+        type: choice
+        options:
+          - dev
+          - prod
+        required: true
 
 jobs:
   build:
