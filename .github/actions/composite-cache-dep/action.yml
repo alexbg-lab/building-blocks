@@ -27,7 +27,7 @@ runs:
       id: cache
       with:
         path: ${{ inputs.working-dir }}/node_modules
-        key: |
+        key:
           node-modules-${{ inputs.target-env }}-${{ hashFiles('${{ inputs.working-dir
           }}/package-lock.json') }}
     - name: Install dependencies for ${{ inputs.target-env }}
