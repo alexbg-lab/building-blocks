@@ -16,5 +16,5 @@ jobs:
         uses: actions/checkout@v3
       - name: Ping URL
         uses: ./.github/actions/docker-ping-url
-        withL:
+        with:
           url: ${{ inputs.url }}
