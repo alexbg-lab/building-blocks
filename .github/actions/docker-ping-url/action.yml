@@ -2,7 +2,7 @@ name: Ping URL
 description: Used to Ping URL of an app
 
 input:
-  url:
+  url: # INPUT_URL
     description: URL to ping
     required: true
   max_trials:
