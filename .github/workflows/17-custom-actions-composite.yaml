@@ -18,13 +18,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Setup Node & NPM deps
+        id: setup-deps
         uses: ./.github/actions/composite-cache-dep
         with:
           working-dir: 17-custom-actions/react-app
           node-version: 24.x
           target-env: ${{ inputs.target-env }}
       - name: Print setup deps
-        run: echo ${{ steps.cache.outputs.installed-deps }}
+        run: echo ${{ steps.setup-deps.outputs.installed-deps }}
       - name: Test
         run: npm ci
         working-directory: 17-custom-actions/react-app
