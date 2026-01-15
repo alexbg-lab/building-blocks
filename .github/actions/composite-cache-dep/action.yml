@@ -47,7 +47,7 @@ runs:
       shell: bash
       id: cache-output
       run: |
-        echo "Cache Hit??" ${{ steps.cache.outputs.installed-deps }}
+        echo "Cache Hit?? ${{ steps.cache.outputs.installed-deps }}"
     - name: Random Output
       shell: bash
       id: random-output
