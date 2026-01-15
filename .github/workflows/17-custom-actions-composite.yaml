@@ -25,7 +25,8 @@ jobs:
           node-version: 24.x
           target-env: ${{ inputs.target-env }}
       - name: Print setup deps
-        run: echo ${{ steps.setup-deps.outputs.installed-deps }}
+        run: |
+          echo "Cache hit?: ${{ steps.setup-deps.outputs.installed-deps }}"
       - name: Test
         run: npm ci
         working-directory: 17-custom-actions/react-app
