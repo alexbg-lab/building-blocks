@@ -22,9 +22,6 @@ outputs:
   random-output:
     description: Random value output
     value: ${{ steps.random-output.outputs.random }}
-  deps-installed:
-    description: deps installed output
-    value: ${{ steps.cache-output.outputs.installed-deps }}
 
 runs:
   using: composite
