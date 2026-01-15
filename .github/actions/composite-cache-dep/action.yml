@@ -47,3 +47,6 @@ runs:
       shell: bash
       id: random-output
       run: echo "radom=123" >> $GITHUB_OUTPUT
+    - name: Print DEPS output
+      shell: bash
+      run: echo ${{ steps.cache.outputs.installed-deps }}
