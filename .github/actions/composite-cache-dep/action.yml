@@ -18,7 +18,7 @@ inputs:
 outputs:
   installed-deps:
     description: Check if installed dependencies
-    value: ${{ steps.cache.outputs.cache-hit == 'true' }}
+    value: ${{ steps.cache.outputs.cache-hit }}
   random-output:
     description: Random value output
     value: ${{ steps.random-output.outputs.random }}
@@ -43,11 +43,6 @@ runs:
       run: ${{ inputs.target-env == 'dev' && 'npm ci' || 'npm ci --omit=dev' }}
       shell: bash
       working-directory: ${{ inputs.working-dir }}
-    - name: Print DEPS output
-      shell: bash
-      id: cache-output
-      run: |
-        echo "Cache Hit?? ${{ steps.cache.outputs.installed-deps }}"
     - name: Random Output
       shell: bash
       id: random-output
