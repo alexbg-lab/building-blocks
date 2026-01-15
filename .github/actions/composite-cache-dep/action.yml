@@ -49,9 +49,9 @@ runs:
     - name: Print DEPS output
       shell: bash
       id: cache-output
-      run: echo ${{ steps.cache.outputs.installed-deps }}
+      run: |
+        echo "Cache Hit??" ${{ steps.cache.outputs.installed-deps }}
     - name: Random Output
       shell: bash
       id: random-output
       run: echo "radom=123" >> $GITHUB_OUTPUT
-
