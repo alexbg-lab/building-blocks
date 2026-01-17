@@ -11,7 +11,7 @@ def run():
     website_reachable = requests.get(website_url).status_code
     print("Website Status Code:", website_reachable)
 
-    set_output(os.getenv("GITHUB_OUTPUT"), url - reachable, website_reachable)
+    set_output(os.getenv("GITHUB_OUTPUT"), "url-reachable", website_reachable)
     if not website_url:
         raise Exception(f"Website URL: {website_url} is malformed/unreachable")
 
