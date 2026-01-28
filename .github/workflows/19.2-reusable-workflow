@@ -1,18 +1,18 @@
-name: 19 - Reusable-workflow
+name: 19.2 - Reusable-workflow
 
 on:
   workflow_dispatch:
-    inputs:
-      target-dir:
-        type: string
-        required: true
-    outputs:
-      build-status:
-        value: ${{ jobs.deploy.outputs.url }}
-        description: "Build status"
-      url:
-        value: ${{ jobs.deploy.outputs.url }}
-        description: "URL of the deployed version"
 
 jobs:
-  deploy: uses:./.github/workflows/19.1-reusable-workflow
+  deploy-app:
+    uses: ./.github/workflows/19.1-reusable-workflow
+    with:
+      target-dir: dummy-dir
+  deploy-outputs:
+    runs-on: ubuntu-latest
+    needs: deploy-app
+    steps:
+      - name: Print outputs
+        run: |
+          echo "Build status: ${{ needs.deploy.outputs.build-status }}"
+          echo "URL: ${{ needs.deploy.outputs.url }}"
