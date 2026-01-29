@@ -1,4 +1,4 @@
-name: 20 - Manage Concurrency
+name: 20.1 - Manage Concurrency
 
 on:
   workflow_dispatch:
