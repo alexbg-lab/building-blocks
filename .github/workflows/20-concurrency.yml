@@ -1,4 +1,4 @@
-name: 20 - Concurrency
+name: 20 - Manage Concurrency
 
 on:
   workflow_dispatch:
@@ -18,6 +18,6 @@ jobs:
         uses: ./.github/actions/docker-ping-url
         id: ping-url
         with:
-          url: https://www.google.com
+          url: https://www.1google.com
           max_trials: 10
           delay: 5
